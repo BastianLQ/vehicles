@@ -22,4 +22,3 @@ if disp_button:
     fig = px.scatter(car_data, x="odometer", y="price")
     st.plotly_chart(fig, use_container_width=True)
 
-print(car_data)
