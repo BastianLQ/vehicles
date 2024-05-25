@@ -26,3 +26,15 @@ if disp_button:
     fig = px.scatter(car_data, x="odometer", y="price")
     st.plotly_chart(fig, use_container_width=True)
 
+build_barplot = st.checkbox('Construir gráfico de barras')
+
+if build_barplot:
+    st.write('Creación de gráfico de barras para tipo de vehículo y transmisión')
+    exp = car_data.reset_index()
+    exp = exp.groupby(['type','transmission'])['index'].count()
+    exp = exp.to_frame()
+    exp = exp.reset_index(['type','transmission'])
+    fig = px.bar(exp, x='type', y='index',color='transmission')
+    st.plotly_chart(fig, use_container_width=True)
+
+
